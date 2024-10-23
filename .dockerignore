@@ -1,0 +1,40 @@
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+
+# Ignore virtual environments
+venv/
+.env/
+
+# Ignore log files
+*.log
+
+# Ignore system files
+.DS_Store
+*.swp
+*.swo
+*.swn
+
+# Ignore test and coverage reports
+tests/
+coverage/
+*.coverage
+
+# Ignore local development settings
+.local/
+.vscode/
+.idea/
+
+# Ignore Docker-related files
+docker-compose.yml
+Dockerfile
+
+# Ignore Git repository
+.git/
+.gitignore
+
+# Ignore node_modules (if you're using any Node.js package)
+node_modules/

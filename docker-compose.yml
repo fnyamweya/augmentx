@@ -1,0 +1,39 @@
+# docker-compose.yml
+
+version: "3.8"
+
+services:
+  augmentx-api:
+    build: .
+    container_name: augmentx-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    depends_on:
+      - redis
+    networks:
+      - augmentx-net
+
+  redis:
+    image: redis:alpine
+    container_name: augmentx-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - augmentx-net
+
+  celery-worker:
+    build: .
+    command: celery -A celery_app worker --loglevel=info
+    container_name: augmentx-celery-worker
+    depends_on:
+      - redis
+    networks:
+      - augmentx-net
+
+networks:
+  augmentx-net:
+    driver: bridge
